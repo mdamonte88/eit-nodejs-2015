@@ -1,0 +1,23 @@
+{
+  "name": "proyecto-frontend",
+  "version": "0.0.1",
+  "authors": [
+    "Jonathan MirCha <jonmircha@gmail.com>"
+  ],
+  "description": "Proyecto Frontend gestionado con bower",
+  "keywords": [
+    "bower"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "FlexSlider": "https://github.com/woothemes/FlexSlider.git",
+    "fancyBox": "https://github.com/fancyapps/fancyBox.git#~2.1.5"
+  }
+}
