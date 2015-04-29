@@ -30,6 +30,26 @@ function jade(req, res, next)
 	res.render("index",locals);
 }
 
+function ejs(req, res, next)
+{
+	var locals = {
+		title: "EJS",
+		link: "http://www.embeddedjs.com/",
+		description:"EJS limpia el HTML del JavaScript con plantillas del lado cliente. Combina datos y una plantilla para producir HTML. Código entre <%%> se ejecuta. Código entre <%= %> lo añade al HTML que se resuelve.",
+		dcHeroes:["Batman","Superman","Wonder Woman","Flash","Green Lantern"],
+		infoHeroes:[
+			["Batman","Bruce Wayne","Ciudad Gótica"],
+			["Superman","Clark Kent","Metrópolis"],
+			["Wonder Woman","Princesa Diana","Reino de las Amazonas"],
+			["The Flash","Barry Allen","Ciudad Central"],
+			["Green Lantern","Hal Jordan","Sector Espacial 2814"]
+		]
+	};
+
+	res.render("index",locals);
+}
+
+router.get("/ejs",ejs);
 router.get("/jade",jade);
 router.use(error404);
 

@@ -10,10 +10,9 @@ var express = require("express"),
 	port = (process.env.PORT || 3000),
 	app = express();
 
-app.set("views",viewDir);
-//app.set("view engine","jade");
-app.set("view engine","ejs");
-app.set("port",port);
+app.set("views", viewDir);
+app.set("view engine","jade");
+app.set("port", port);
 
 app.use(favicon(faviconURL));
 app.use(publicDir);
