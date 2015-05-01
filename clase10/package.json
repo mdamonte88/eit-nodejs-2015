@@ -1,7 +1,7 @@
 {
   "name": "web-scrapping",
-  "version": "0.0.1",
-  "description": "Obteniendo información de la web con Express y Node.JS",
+  "version": "0.1.0",
+  "description": "Obteniendo información de la web con Express, Node.JS y promesas",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

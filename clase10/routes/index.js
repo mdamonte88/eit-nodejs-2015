@@ -1,8 +1,11 @@
+//http://www.omdbapi.com/
+
 "use strict";
 
 var express = require("express"),
 	request = require("request"),
 	cheerio = require("cheerio"),
+	Q = require("q"),
 	fs = require("fs"),
 	router = express.Router();
 
@@ -18,8 +21,6 @@ function error404(req, res, next)
 	}
 
 	res.render("error",locals);
-
-	//next();
 }
 
 function webForm(req, res, next)
@@ -29,27 +30,29 @@ function webForm(req, res, next)
 	};
 
 	res.render("index",locals);
-
-	//next();
 }
 
 function webScraping(req, res, next)
-{
-	//1)Obtener la informacion del url de la peli (código html)
-	//2)Extraer la info de mi interes
-	//3)Guardarla en un archivo .json
-	//4)Una vez que tenga la info guardada, mostrarla en el navegador
-	
+{	
 	var url = req.query.movie,
 		idMovie = url.slice(26,35);
 
-	request(url, function (err, res, html){
-		if(!err)
-		{
-			//extraer y analizar la info
-			var $ = cheerio.load(html);
-			
-			var json = {
+	function scrapeRequest(url)
+	{
+		var defer = Q.defer();
+		
+		request(url,function (err, res, html){
+			return err?defer.reject(new Error("URL Inexistente")):defer.resolve(html);
+		});
+
+		return defer.promise;
+	}
+
+	function scrapeCheerio(html)
+	{
+		var $ = cheerio.load(html),
+			defer = Q.defer(),
+			json = {
 				id:"",
 				title:"",
 				release:"",
@@ -57,68 +60,80 @@ function webScraping(req, res, next)
 				image:""
 			};
 
-			json.id = url.slice(26,35);
+		json.id = url.slice(26,35);
+		json.title = $(".header").find(".itemprop").text();
+		json.release = $(".header").find(".nobr").children().text();
+		json.rating = $(".star-box-giga-star").text();
+		json.image = $(".image").find("img").attr("src");
 
-			/*
-				<h1 class="header">
-					<span class="itemprop" itemprop="name">300</span>
-	            	<span class="nobr">(<a href="/year/2006/?ref_=tt_ov_inf">2006</a>)</span>
-				</h1>
-			*/
-
-			json.title = $(".header").find(".itemprop").text();
-			json.release = $(".header").find(".nobr").children().text();
-
-			/*
-				<div class="star-box giga-star">
-					<div class="titlePageSprite star-box-giga-star"> 8,6 </div>
-					.......
-				</div>
-			*/
-
-			json.rating = $(".star-box-giga-star").text();
-
-			/*
-			<div class="image">
-				<a href="/media/rm960529408/tt0075148?ref_=tt_ov_i">
-					<img height="317" width="214" alt="Rocky (1976) Poster" title="Rocky (1976) Poster" src="http://ia.media-imdb.com/images/M/MV5BMTY5MDMzODUyOF5BMl5BanBnXkFtZTcwMTQ3NTMyNA@@._V1_SX214_AL_.jpg" itemprop="image">
-				</a>
-			</div>
-			*/
-
-			json.image = $(".image").find("img").attr("src");
-		}
-
-		//Salvar la info
-		var fileName = "public/js/"+json.id+".json";
-		
-		fs.writeFile(fileName,JSON.stringify(json,null,4),function (err){
-			var message = (err)?"Error al guardar la información":"Información almacenada con éxito";
-			console.log(message);
-		});
-	});
-
-	//mostrar en la web la info salvada
-	var fileName = "public/js/"+idMovie+".json";
-	fs.readFile(fileName,function (err, data){
-		if(err)
+		if(html)
 		{
-			res.send(err);
+			defer.resolve(json);
 		}
 		else
 		{
-			var locals = {
-				title:"Web Scraping con Express y Node.JS",
-				info:data
-			};
-
-			res.render("movie",locals);
+			defer.reject(new Error("Error al Cargar la información"));
 		}
-	});
+
+		return defer.promise;
+	}
+
+	function writeJSON(json)
+	{
+		var defer = Q.defer(),
+			fileName = "public/js/"+json.id+".json";
+
+		fs.writeFile(fileName,JSON.stringify(json,null,4),function (err){
+			return err?defer.reject(new Error("Error al guardar la información")):defer.resolve(fileName);
+		});
+
+		return defer.promise;
+	}
+
+	function readFileInWeb(file)
+	{
+		var defer = Q.defer();
+
+		fs.readFile(file,function (err, data){
+			if(err)
+			{
+				defer.reject(new Error("Archivo No Leído"));
+			}
+			else
+			{
+				var locals = {
+					title:"Web Scraping con Express y Node.JS",
+					info:data
+				};
+				res.render("movie",locals);
+
+				defer.resolve(true);
+			}
+		});
+
+		return defer.promise;
+	}
+
+	function errorScrape(err)
+	{
+		console.log(err.message);
+
+		res.render("error",{
+			title:"Error en la Aplicación",
+			description:err.message,
+			error:err
+		});
+	}
+
+	scrapeRequest(url)
+		.then(function (promiseHTML){ return scrapeCheerio(promiseHTML); })
+		.then(function (promiseJSON){ return writeJSON(promiseJSON); })
+		.then(function (promiseFile){ return readFileInWeb(promiseFile)  })
+		.fail(function (err){ return errorScrape(err); });
 }
 
-router.get("/scrape",webScraping);
 router.get("/",webForm);
+router.get("/scrape",webScraping);
 router.use(error404);
 
 module.exports = router;

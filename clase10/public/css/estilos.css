@@ -1,4 +1,4 @@
-body,html
+body, html
 {
 	background: #1D1D1D;
 	color: #FFF;
@@ -7,9 +7,31 @@ body,html
 	text-align: center;
 }
 
+*, *:before, *:after { box-sizing: border-box; }
+
 a { color: #80BD01; }
 
 a:hover { color: rgba(128,189,1,.5); }
+
+input
+{
+	border: 0;
+	padding: .5rem;
+}
+
+input[type="url"] { width: 50%; }
+
+input[type="submit"]
+{
+	background-color: #80BD01;	
+	color: #FFF;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover
+{
+	background-color: rgba(128,189,1,.75);
+}
 
 #logo
 {
@@ -17,7 +39,7 @@ a:hover { color: rgba(128,189,1,.5); }
 	background-size: contain;
 	display: block;
 	height: 150px;
-	margin: auto;
+	margin: 1rem auto;
 	width: 450px;
 }
 
