@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	section(class="container")
+		div#logo
+		h1=title
+		article(class="article")
+			form(method="post",action="/",class="form")
+				fieldset
+					div
+						label(for="movie_id") Id Película:
+						input(type="text",name="movie_id", id="movie_id", required)
+					div
+						label(for="title") Título:
+						input(type="text",name="title", id="title", required)
+					div
+						label(for="release_year") Año:
+						input(type="text",name="release_year", id="release_year", required)
+					div
+						label(for="rating") Calificación:
+						input(type="text",name="rating", id="rating", required)
+					div
+						label(for="image") Poster:
+						input(type="text",name="image", id="image", required)
+					div
+						input(type="submit", value="Agregar", class="button add")
