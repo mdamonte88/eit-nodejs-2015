@@ -1,5 +1,14 @@
 "use strict";
 
+/*
+REST    CRUD	FORM METHOD
+GET		SELECT	GET
+POST	INSERT	POST
+PUT		UPDATE	POST
+DELETE	DELETE	POST
+*/
+
+
 var mysql = require("mysql"),
 	myConnection  = require("express-myconnection"),
 	dbOptions = {

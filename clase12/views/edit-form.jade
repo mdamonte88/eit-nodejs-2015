@@ -3,25 +3,26 @@ extends layout
 block content
 	section(class="container")
 		div#logo
-		h1=title
-		h2=data[0].title
+		h1
+			a(href="/")=title
 		article(class="article")
-			form(method="post",action="/",class="form")
+			form(method="post",action="/actualizar/#{data[0].movie_id}",class="form")
 				fieldset
 					div
-						label(for="movie_id") Id Película:
-						input(type="text",name="movie_id", id="movie_id", value="", required)
+						label(for="id") Id Película:
+						input(type="text",name="id", id="id", value="#{data[0].movie_id}", disabled, required)
+						input(type="hidden",name="movie_id", id="movie_id", value="#{data[0].movie_id}", required)
 					div
 						label(for="title") Título:
-						input(type="text",name="title", id="title", required)
+						input(type="text",name="title", id="title", value="#{data[0].title}", required)
 					div
 						label(for="release_year") Año:
-						input(type="text",name="release_year", id="release_year", required)
+						input(type="text",name="release_year", id="release_year", value="#{data[0].release_year}", required)
 					div
 						label(for="rating") Calificación:
-						input(type="text",name="rating", id="rating", required)
+						input(type="text",name="rating", id="rating", value="#{data[0].rating}", required)
 					div
 						label(for="image") Poster:
-						input(type="text",name="image", id="image", required)
+						input(type="text",name="image", id="image", value="#{data[0].image}", required)
 					div
-						input(type="submit", value="Agregar", class="button add")
+						input(type="submit", value="Actualizar", class="button add")

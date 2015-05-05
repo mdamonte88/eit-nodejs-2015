@@ -2,6 +2,20 @@ var movies = require("../models/movies"),
 	express = require("express"),
 	router = express.Router();
 
+function error404(req, res, next)
+{
+	var error = new Error();
+	error.status = 404;
+
+	var locals = {
+		title:"ERROR 404",
+		description:"RECURSO NO ENCONTRADO",
+		error:error
+	}
+
+	res.render("error",locals);
+}
+
 router.use(movies);
 
 router.get("/", function (req, res){
@@ -52,5 +66,34 @@ router.get("/editar/:movie_id",function (req, res){
 		});
 	});
 });
+
+router.post("/actualizar/:movie_id",function (req, res){
+	req.getConnection(function (err, movies){
+		var movie = {
+			movie_id:req.body.movie_id,
+			title:req.body.title,
+			release_year:req.body.release_year,
+			rating:req.body.rating,
+			image:req.body.image
+		};
+		console.log(movie);
+
+		movies.query("UPDATE movie SET ? WHERE movie_id = ?", [movie, movie.movie_id], function (err, rows){
+			return (err)?res.redirect("/actualizar/:movie_id"):res.redirect("/");
+		});
+	});
+});
+
+router.post("/eliminar/:movie_id",function (req, res, next){
+	req.getConnection(function (err, movies){
+		var movie_id = req.params.movie_id;
+		//console.log(movie_id);
+		movies.query("DELETE FROM movie WHERE movie_id = ?", movie_id, function (err, rows){
+			return (err)?next(new Error("Registro No encontrado")):res.redirect("/");
+		});
+	});
+});
+
+router.use(error404);
 
 module.exports = router;

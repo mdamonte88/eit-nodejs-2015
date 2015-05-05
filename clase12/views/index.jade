@@ -3,7 +3,8 @@ extends layout
 block content
 	section(class="container")
 		div#logo
-		h1=title
+		h1
+			a(href="/")=title
 		article(class="article")
 		-if(data.length)
 			table(class="table")
@@ -28,6 +29,14 @@ block content
 						td
 							form(method="get",action="/editar/#{movie.movie_id}")
 								input(type="submit",value="Editar",class="button edit")
-						td botón eliminar
+						td
+							form(method="post",action="/eliminar/#{movie.movie_id}")
+								input(type="button",value="Eliminar",class="button delete", onclick="eliminar(this)")
+			script.
+				function eliminar(input)
+				{
+					var deleteOK = confirm("¿Estás seguro de eliminar la película?");
+					return (deleteOK)?input.parentNode.submit():false;
+				}					
 		-else
 			div(class="error") No tienes Películas que mostrar

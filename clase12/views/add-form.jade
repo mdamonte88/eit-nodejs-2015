@@ -3,7 +3,8 @@ extends layout
 block content
 	section(class="container")
 		div#logo
-		h1=title
+		h1
+			a(href="/")=title
 		article(class="article")
 			form(method="post",action="/",class="form")
 				fieldset
