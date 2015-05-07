@@ -14,3 +14,5 @@ myConn.connect(function (err){
 				?console.log("Error al Conectarse a MySQL: " + err.stack)
 				:console.log("Conexíon establecida con MySQL N°:" + myConn.threadId);
 });
+
+module.exports = myConn;
