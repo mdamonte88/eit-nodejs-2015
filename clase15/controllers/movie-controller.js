@@ -53,17 +53,44 @@ ControllerMovie.save = function (req, res, next)
 
 ControllerMovie.get = function (req, res, next)
 {
+	var movie_id = req.params.movie_id;
+	console.log(movie_id);
 
+	movieModel.get(movie_id, function (docs){
+		var locals = {
+			title:"Editar Película",
+			data:docs
+		};
+
+		res.render("edit-form",locals);
+	});
 }
 
 ControllerMovie.update = function (req, res, next)
 {
+	var movie = {
+		movie_id:req.body.movie_id,
+		title:req.body.title,
+		release_year:req.body.release_year,
+		rating:req.body.rating,
+		image:req.body.image
+	};
+	
+	console.log(movie);
 
+	movieModel.update(movie, function (){
+		res.redirect("/");
+	});
 }
 
 ControllerMovie.delete = function (req, res, next)
 {
+	var movie_id = req.params.movie_id;
+	console.log(movie_id);
 
+	movieModel.delete(movie_id, function (){
+		res.redirect("/");
+	});
 }
 
 
