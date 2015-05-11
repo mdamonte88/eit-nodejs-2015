@@ -33,26 +33,13 @@ ControllerAuth.logInPost = function(req, res, next)
 
 	console.log(user);
 
-	authModel.getUser(user, function (err, rows){
-		if(err)
-		{
-			var locals = {
-				title:"Error al consultar la base de datos",
-				description:"Error de Sintaxis SQL",
-				error:error
-			};
+	authModel.getUser(user, function (docs){
+		req.session.username = (docs!=null)?user.username:null;
+		console.log(req.session,"---",docs);
 
-			res.render("error",locals);
-		}
-		else
-		{
-			req.session.username = (rows[0].count==1)?user.username:null;
-			console.log(req.session,"---",rows);
-
-			return (req.session.username)
-					?res.redirect("/peliculas")
-					:errors.http401(req, res, next);
-		}
+		return (req.session.username)
+				?res.redirect("/peliculas")
+				:errors.http401(req, res, next);
 	});
 }
 
@@ -71,21 +58,8 @@ ControllerAuth.signInPost = function(req, res, next)
 
 	console.log(user);
 
-	authModel.setUser(user,function (err, rows){
-		if(err)
-		{
-			var locals = {
-				title:"Error al consultar la base de datos",
-				description:"Error de Sintaxis SQL",
-				error:error
-			};
-
-			res.render("error",locals);
-		}
-		else
-		{
-			res.redirect("/?message=El usuario "+user.username+" ha sido creado");
-		}
+	authModel.setUser(user,function (docs){
+		res.redirect("/?message=El usuario "+user.username+" ha sido creado");
 	});
 }
 

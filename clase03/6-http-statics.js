@@ -28,13 +28,13 @@ function server(req, res)
 
 	if(!res.finished)
 	{
+		console.log("Hola");
 		res.writeHead(404,{"Content-Type":"text/html"});
 		fs.readFile("statics/404.html",function (err,data){
 			if(err) throw err;
 			res.end(data);
 		});
 	}
-	
 }
 
 http.listen(3000);

@@ -5,6 +5,8 @@ block content
 		div#logo
 		h1
 			a(href="/")=title
+		h2 Bienvenido #{user}
+		a(href="/logout") Cerrar sesión
 		article.article
 			form.form(method="post", action="/pelicula/#{data[0].movie_id}")
 				fieldset

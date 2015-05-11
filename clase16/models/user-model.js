@@ -5,7 +5,7 @@ var authModel  = require("./movie-schema"),
 
 Auth.getUser = function (user, cb)
 {
-	var sql = "Select * FROM users WHERE username = ? AND password = ?";
+	var sql = "SELECT COUNT(*) AS count FROM users WHERE username = ? AND password = ?";
 	authModel.query(sql, [user.username, user.password], cb);
 }
 
