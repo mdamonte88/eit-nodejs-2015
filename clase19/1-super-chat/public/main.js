@@ -15,6 +15,9 @@ $(function() {
 
   var $loginPage = $('.login.page'); // The login page
   var $chatPage = $('.chat.page'); // The chatroom page
+  ///////////////////INICIO////////////////////
+  var $titleLogin = $('.title'); // The title login
+  ///////////////////FIN/////////////////////
 
   // Prompt for setting a username
   var username;
@@ -37,6 +40,34 @@ $(function() {
 
   // Sets the client's username
   function setUsername () {
+    ////////////////////INICIO////////////////////
+    username = cleanInput($usernameInput.val().trim());
+    if(username)
+    {
+      socket.emit('exist user',username,function (callback){
+        if(callback)
+        {
+          $loginPage.fadeOut();
+          $chatPage.show();
+          $loginPage.off('click');
+          $currentInput = $inputMessage.focus();
+
+          // Tell the server your username
+          socket.emit('add user', username);
+        }
+        else
+        {
+          //mandar un mensaje de que el usuario existe
+          $titleLogin.html('The user "'+username+'" already exists!');
+          $usernameInput.val(null);
+          username = null;
+        }
+      });
+    }
+    ///////////////////FIN///////////////////////
+
+    /* 
+    CÓDIGO ORIGINAL
     username = cleanInput($usernameInput.val().trim());
 
     // If the username is valid
@@ -49,6 +80,7 @@ $(function() {
       // Tell the server your username
       socket.emit('add user', username);
     }
+    */
   }
 
   // Sends a chat message

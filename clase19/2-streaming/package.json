@@ -1,0 +1,19 @@
+{
+  "name": "streaming-socketio-express",
+  "version": "0.0.1",
+  "description": "Streaming de Video con Socket.IO y Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Streaming",
+    "Video"
+  ],
+  "author": "@jonmircha",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.3",
+    "socket.io": "^1.3.5"
+  }
+}
