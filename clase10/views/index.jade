@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h1=title
+	div#logo
+	form(metod="get" action="/scrape")
+		label(for="movie") Ingresa url de película: 
+		input(type="url" name="movie" id="movie")
+		input(type="submit" value="Enviar")

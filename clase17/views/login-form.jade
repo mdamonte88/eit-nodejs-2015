@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	section.container
+		div#logo
+		h1
+			a(href="/")=title
+		-if(message)
+			div.error=message
+		article.article
+			form.form(method="post", action="/login")
+				fieldset
+					div
+						label(for="username") Usuario:
+						input#username(type="text", name="username", required)
+					div
+						label(for="password") Password:
+						input#password(type="password", name="password", required)
+					div
+						input.button.add(type="submit", value="Loguearse")
+			
+			a(href="/signin") Registrarse

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cliente de Streaming</title>
+</head>
+<body>
+	<h1>Cliente de Streaming</h1>
+	<p>Esta página recibe en tiempo real el streaming de la camara web</p>
+	<img id="streaming" />
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		"use strict";
+
+		var io = io();
+
+		io.on("play video", function (img){
+			document.getElementById("streaming").src = img;
+		});
+	</script>
+</body>
+</html>
