@@ -1,3 +1,0 @@
-http://localhost:2368/ghost
-user: j@bextlan.com
-pass: eitnode2015

@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<title>Curso de NodeJS 2015 de Escuela IT por @jonmircha</title>
+	
+	<meta name="description" content="Esta presentación contiene toda la teoría y es una referencia temática del Curso de NodeJS de Escuela IT impartido por Jonathan MirCha">
+	<meta name="author" content="Jonathan MirCha">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+	
+	<link rel="stylesheet" href="css/jon.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="corner c-tl"><img src="img/escuela-it.png" alt="Escuela IT" style="max-width: 90%;" /></div>
+	<div class="corner c-tr"><img src="img/nodejs-logo.png" alt="Node.JS" style="max-width: 60%;" /></div>
+	<div class="corner c-bl"><p>Curso NodeJS 2015 de Escuela IT</p></div>
+	<div class="corner c-br"><p>por Jonathan MirCha - @jonmircha</p></div>
+	<div class="reveal">
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<h1>Curso NodeJS 2015</h1>
+				<div><img src="img/nodejs-logo.png" alt="Node.JS" style="border:0; box-shadow:none;" /></div>
+				<h2>de <a href="http://escuela.it/" target="_blank">Escuela IT</a></h2>
+				<p>por <a href="http://twitter.com/jonmircha" target="_blank">@jonmircha</a></p>
+			</section>
+			<section>
+				<figure>
+					<figcaption><a href="http://jonmircha.com" target="_blank">Jonathan MirCha</a></figcaption>
+					<img src="img/jonmircha.jpg" style="max-width: 80%;" border="0" alt="Jonathan MirCha" />
+				</figure>
+			</section>
+			<section>
+				<h2>Información del Curso</h2>
+				<ul>
+					<li>inicio: <b>16 Abril 2015</b></li>
+					<li>termina: <b>14 Mayo 2015</b></li>
+					<li><b>20</b> sesiones en <b>vivo</b></li>
+					<li>de <b>lunes</b> a <b>viernes</b></li>
+					<li>de <b>8pm</b> a <b>10pm</b> (<b>hora Madrid</b>)</li>
+					<li><a href="http://www.convertworld.com/es/zonas-horarias/" target="_blank">¿A qué hora será en mi ciudad?</a></li>
+					<li>viernes <b>1° Mayo NO</b> hay clases</li>
+					<li>hashtag: <a href="https://twitter.com/search?f=realtime&q=eitnode" target="_blank">#eitnode</a></li>
+					<li><a href="http://escuela.it/cursos/curso-de-nodejs/" target="_blank">+info</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Slides y Repositorio</h2>
+				<p>
+					<a href="https://jonmircha.github.io/nodejs" target="_blank">jonmircha.github.io/nodejs</a>
+					<br />
+					<a href="https://github.com/jonmircha/eit-nodejs-2015" target="_blank">github.com/jonmircha/eit-nodejs-2015</a>
+				</p>
+			</section>
+			<section>
+				<h2>Temas:</h2>
+				<ol>
+					<li>Presentación</li>
+					<li>Consideraciones</li>
+					<li>Introducción</li>
+					<li>El core de Node.JS</li>
+					<li>Aplicaciones Web</li>
+					<li>Persistencia de Datos</li>
+					<li>Comunicación Bidireccional</li>
+					<li>Node.JS en Producción</li>
+					<li>IO.JS</li>
+				</ol>
+			</section>
+			<section>
+				<h1>Consideraciones</h1>
+				<img src="img/node-is-coming.jpg" />
+			</section>
+			<section>
+				<ul>
+					<li>Conocimientos sólidos de JavaScript</li>
+					<li>¿No los tienes?...</li>
+					<li>No te preocupes XD da click <a href="http://cursos.bextlan.com/web" target="_blank">aquí</a></li>
+                    <li>Node.JS es <b>emergente</b> y <b>cambiante</b></li>
+                    <li>Sé <b>AUTODIDACTA</b></li>
+                    <li>Leé <b>documentación</b></li>
+                    <li>Aprende <b>inglés</b></li>
+                    <li>Debes manejar la <b>terminal de comandos</b> de tu S.O.</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 1</h1>	
+			</section>
+			<section>
+				<h1>Introducción</h1>
+				<img src="img/why-so-asynchronous.jpg" style="max-width:50%;"/>
+			</section>
+			<section>
+				<h2>¿Qué es Node.JS?</h2>
+				<div class="dos-columnas">
+					<ul>
+						Lo que todos sabemos
+						<li>Tiene JS</li>
+						<li>Es Backend</li>
+						<li>¿Algo que ver con NoSQL?</li>
+						<li>Sirve para hacer chats</li>
+					</ul>
+				</div>
+				<div class="dos-columnas">
+					<ul>
+						Lo que no está tan claro
+						<li>¿Es un framework JS?</li>
+						<li>¿Es una librería?</li>
+						<li>¿Qué tiene que ver v8?</li>
+						<li>¿Para qué sirve?<br />(<small>además de chats</small>)</li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<blockquote>
+					Node.js® is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+				</blockquote>
+				<h3 class="fragment">WTF!!!</h3>
+			</section>
+			<section>
+				<h2>¿Entonces?</h2>
+				<ul>
+					Si...
+					<li><b>Ruby</b> tiene <b>Rails</b></li>
+					<li><b>Python</b> tiene <b>Django</b></li>
+					<li><b>PHP</b> tiene <b>Laravel</b></li>
+					<br />
+					<li class="fragment"><b>JS</b> ¿tiene a <b>Node.JS</b>?</li>
+				</ul>
+			</section>
+			<section>
+				<h1>¡¡¡NO!!!</h1>
+				<h2>no es un Framework</h2>
+			</section>
+			<section>
+				<h1>Es una entorno de programación</h1>
+			</section>
+			<section>
+				<h3>Características de un <b>lenguaje de programación</b></h3>
+				<ul>
+					<li>Una gramática que define su sintaxis</li>
+					<li>Un compilador que lo interpreta y ejecuta</li>
+					<li>Mecanismos para interactuar con el exterior</li>
+					<li>Librería estándar (<small>consola, ficheros, red, etc.</small>)</li>
+					<li>Utilidades (<small>intérprete, depurador, paquetes, etc.</small>)</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Características de un <b>lenguaje de programación</b></h3>
+				<ul>
+					<ul>
+						<li>
+							V8
+							<ul>
+								<li>Una gramática que define su sintaxis</li>
+								<li>Un compilador que lo interpreta y ejecuta</li>
+							</ul>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							Node.JS
+							<ul>
+								<li>Mecanismos para interactuar con el exterior</li>
+								<li>Librería estándar (<small>consola, ficheros, red, etc.</small>)</li>
+								<li>Utilidades (<small>intérprete, depurador, paquetes, etc.</small>)</li>
+							</ul>
+						</li>
+					</ul>
+				</ul>
+			</section>
+			<section>
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Node.JS</th>
+							<th>Ruby</th>
+							<th>Python</th>
+							<th>PHP</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Lenguaje</td>
+							<td>JavaScript</td>
+							<td>Ruby</td>
+							<td>Python</td>
+							<td>PHP</td>
+						</tr>
+						<tr>
+							<td>Motor</td>
+							<td>V8</td>
+							<td>YARV</td>
+							<td>cPython</td>
+							<td>Apache</td>
+						</tr>
+						<tr>
+							<td>Entorno</td>
+							<td>Módulos del core</td>
+							<td>Librerias Standard</td>
+							<td>Librerias Standard</td>
+							<td>Librerias Standard</td>
+						</tr>
+						<tr>
+							<td>Frameworks</td>
+							<td>Express</td>
+							<td>Rails</td>
+							<td>Django</td>
+							<td>Laravel</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h1>En síntesis</h1>
+			</section>
+			<section>
+				<h2>¿Qué es Node.JS?</h2>
+				<ul>
+					<li>Plataforma de desarrollo de software creada en 2009</li>
+					<li>JavaScript en el lado del servidor</li>
+					<li>Basado en la máquina virtual de Chrome (<small>V8 JavaScript Runtime</small>)
+					</li>
+					<li>V8 esta escrito en C (<small>muy rápido</small>)</li>
+					<li>Multiplataforma (<small>Windows, Macintosh, Linux, etc.</small>)</li>
+					<li>Es una <a href="https://www.joyent.com/" target="_blank">marca registrada</a> y es <a href="https://github.com/joyent/node" target="_blank">open source</a></li>
+					<li>Asíncrono y orientado a eventos</li>
+					<li>Ideal para aplicaciones que consumen datos en tiempo real y que se ejecutan a través de dispositivos distribuidos</li>
+					<li>Lo <a href="https://github.com/joyent/node/wiki/Projects,-Applications,-and-Companies-Using-Node" target="_blank">usan</a> muchas empresas (<small>WalMart, Paypal, Yahoo, LinkedIn, eBay, etc.</small>)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Infraestructura</h2>
+				<div>
+					<img src="img/nodejs-platform.png" />
+				</div>
+			</section>
+			<section>
+				<h2>¿Por qué JavaScript?</h2>
+				<div class="dos-columnas">
+					<i>JavaScript has certain characteristics that make it very different than other dynamic languages, namely that it has no concept of threads. Its model of concurrency is completely based around events</i>
+				</div>
+				<figure class="dos-columnas">
+					<img src="img/ryan-dahl.jpg" />
+					<figcaption><a href="https://github.com/ry" target="_blank">Ryan Dahl</a></figcaption>
+				</figure>
+				<h3 class="fragment">WTF!!!</h3>
+			</section>
+			<section>
+				<h2>Lo que quizo decir es:</h2>
+				<ul class="dos-columnas">
+					<li>Compila directamente a código máquina sin un intérprete gracias a V8<br /><br /></li>
+					<li>Modelo I/O (<small>entrada/salida</small>) orientado a eventos, asíncrono y de no bloqueo, que lo hace ligero y eficiente</li>
+				</ul>
+				<div class="dos-columnas">
+					<img src="img/nodejs-work.jpg" />
+					<h3 class="fragment">WTF!!!</h3>
+				</div>
+			</section>
+			<section>
+				<h1>Entendamos</h1>
+				<h2>Paralelismo y Concurrencia</h2>
+				<h2>Bloqueante y No Bloqueante</h2>
+				<h2>Síncrono y Asíncrono</h2>
+			</section>
+			<section>
+				<div class="dos-columnas">
+					<ul>
+						<li>Paralelismo: varios objetos realizando una acción cada uno <b>simultáneamente</b>(<small>síncrono</small>)</li>
+						<li>Concurrencia: un solo objeto, con varias tareas “activas” entre las que va <b>alternando</b>(<small>asíncrono</small>)</li>
+						<br />
+					</ul>
+				</div>
+				<div class="dos-columnas">
+					<img class="fragment" src="img/malcolm.jpg" />
+					<a class="fragment" href="http://es.slideshare.net/rcostu/concurrencia-paralelismo" target="_blank">+info</a>
+				</div>
+			</section>
+			<section>
+				<h2>Node.JS es como un mesero</h2>
+				<div class="dos-columnas">
+					<ul>
+						<li>Es un <a href="http://es.wikipedia.org/wiki/Reactor_(patr%C3%B3n_de_dise%C3%B1o)" target="_blank">Patrón Reactor</a> del mundo real</li>
+						<li>Para aprovecharlo, tiene que haber varios clientes</li>
+						<li>Un cliente no termina más rápido por asignarle un mesero exclusivo</li>
+						<li>Cada cliente termina a su ritmo</li>
+					</ul>
+				</div>
+				<div class="dos-columnas">
+					<img src="img/nodejs-waiter.jpg" />
+				</div>
+			</section>
+			<section>
+				<h1>blocking<br />vs<br />non blocking</h1>
+			</section>
+			<section>
+				<h2>comensales vs meseros</h2>
+				<div>
+					<img src="img/comensales.jpg" style="max-width:60%;" />
+				</div>
+				<h3>blocking vs	non blocking</h3>
+			</section>
+			<section>
+				<h1>PHP vs Node.JS</h1>
+				<div>
+					<img src="img/nodejs-vs-php.jpg" />
+				</div>
+				<h2>blocking vs	non blocking</h2>
+			</section>
+			<section>
+				<h2>Infraestructura</h2>
+				<h3>PHP vs Node.JS</h3>
+				<div>
+					<img src="img/nodejs-vs-php-platform.png" />
+				</div>
+			</section>
+			<section>
+				<h2>Abriendo un fichero</h2>
+				<div class="dos-columnas">
+					<h3>Blocking</h3>
+					<ul>
+						<li>Abrir el archivo</li>
+						<li>Leer el archivo</li>
+						<li>Imprimir contenido</li>
+						<li>Hacer algo más</li>
+					</ul>
+				</div>
+				<div class="dos-columnas">
+					<h3>Non blocking</h3>
+					<ul>
+						<li>Abrir el archivo</li>
+						<li>
+							Leer el archivo
+							<ul>
+								<li>Cuando termines, imprimir contenido</li>
+							</ul>
+						</li>
+						<li>Hacer algo más</li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h2>Abriendo un fichero</h2>
+				<h3>PHP Blocking Code</h3>
+				<pre>
+					<code class="php">
+&lt;?php
+printf("Abriendo Archivo...<br />");
+$fichero_url = fopen("archivo.txt","r");
+
+$texto = "";
+
+while ($trozo = fgets($fichero_url)) {
+    $texto .= $trozo;
+}
+
+printf($texto);
+
+printf("<br />Haciendo otra cosa");
+?&gt;
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Abriendo un fichero</h2>
+				<h3>Node.JS Blocking Code</h3>
+				<pre>
+					<code class="javascript">
+var fs = require("fs");
+console.log("\nAbriendo Archivo...");
+
+var content = fs.readFileSync("archivo.txt","utf8");
+console.log(content);
+
+console.log("\nHaciendo otra cosa\n");
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Abriendo un fichero</h2>
+				<h3>Node.JS Non Blocking Code</h3>
+				<pre>
+					<code class="javascript">
+var fs = require("fs");
+console.log("\nAbriendo Archivo...");
+ 
+var content = fs.readFile("archivo.txt","utf8", function(error,content){
+   console.log(content);
+});
+
+console.log("\nHaciendo otra cosa\n");
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>¿Cuál es la diferencia?</h2>
+				<h3 class="fragment">Callback</h3>
+				<div class="fragment">
+					<p>
+						Es una pieza de código ejecutable que se pasa como argumento a otro código.
+					</p>
+					<p>
+						Con la callback estamos logrando un comportamiento <b>asincrónico</b>, es decir, de <b>no bloqueo</b>
+					</p>
+					<p>
+						El código se ejecuta y no espera a que la lectura se complete, cuando esta termine se imprime el contenido.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2>Really Callbacks Dude?</h2>
+				<div class="dos-columnas">
+					<img src="img/callbacks.jpg" />
+				</div>
+				<div class="dos-columnas">
+					<img src="img/callback-dolphin.jpg" />
+				</div>
+			</section>
+			<section>
+				<h2><a href="http://callbackhell.com" target="_blank">Callback Hell</a></h2>
+				<div class="dos-columnas">
+					<img src="img/callback-hell.png" />
+				</div>
+				<div class="dos-columnas">
+					<img src="img/callback-mac.jpg" style="max-width:80%;" />
+				</div>
+			</section>
+			<section>
+				<h2>Evitando Callback Hell</h2>
+				<pre>
+					<code class="javascript">
+var fs = require("fs");
+console.log("\nAbriendo Archivo...");
+
+function imprimir(error,content){
+   console.log(content);
+}
+ 
+var content = fs.readFile("archivo.txt","utf8", imprimir);
+
+console.log("\nHaciendo otra cosa\n");
+					</code>
+				</pre>
+				<p class="fragment">
+					(<small>también se puede con promesas</small>)
+				</p>
+			</section>
+			<section>
+				<h1>
+					Single Thread
+				</h1>
+			</section>
+			<section>
+				<h2>Event Loop</h2>
+				<div>
+					<img src="img/event-loop.png" style="max-width:80%;" />
+				</div>
+			</section>
+			<section>
+				<h2>Event Loop</h2>
+				<div>
+					<img src="img/event-loop-explain.png" />
+				</div>
+			</section>
+			<section>
+				<h2>Características de Node.JS</h2>
+				<ul>
+					<li>Es concurrente sin paralelismo</li>
+					<li>Es asíncrono y no bloqueante</li>
+					<li>Orientado a eventos</li>
+					<li>Single thread basado en callbacks</li>
+				</ul>
+				<div>
+					<img src="img/unique-thread.jpg" />
+				</div>
+			</section>
+			<section>
+				<h2>Si eres Frontend</h2>
+				<ul class="fragment">
+					<li>Es tu mejor opción para hacer <b>backend</b> por qué ya sabes <b>JavaScript</b> (<small>o deberías <div class="carita">XD</div></small>)</li>
+					<li>Si no te interesa el backend, sus <b>módulos</b> te harán mejor frontend (<small>bower, grunt, gulp, less, browserify, etc.</small>)</li>
+					<li>Si tu editor de código es <b>brackets</b> ya usas <b>Node.JS</b><div class="carita">=D</div></li>
+					<li>Puedes comenzar tu carrera como <b> Full Stack JavaScript Developer</b> (<small><a href="http://meanjs.org" target="_blank">MEAN.JS</a> o <a href="http://mean.io" target="_blank">MEAN.IO</a></small>)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Entonces?</h2>
+				<div>
+					<img src="img/js-front-back.jpg" />
+				</div>
+			</section>
+			<section>
+				<h2>¿Qué podemos hacer?</h2>
+				<ul>
+					<li>Aplicaciones cliente - servidor</li>
+					<li>Aplicaciones servidor - servidor (<small>networking</small>)</li>
+					<li>Chats, Juegos, Clientes de Correo, Traductores</li>
+					<li>Aplicaciones Colaborativas y Redes Sociales</li>
+					<li>Estadísticas y Analíticas</li>
+					<li>Aplicaciones de Red (<small>línea de comandos o admin. de sistemas</small>)</li>
+					<li>Sitios Web, Blogs y CMS's</li>
+					<li>Controlar <a href="http://nodebots.io/" target="_blank">Hardware</a></li>
+					<li>En un futuro... dominar al mundo... \<div class="carita">}=D</div>/ de la web</li>
+				</ul>
+			</section>
+			<section>
+				<h2>No podrás decir qué no</h2>
+				<div class="dos-columnas">
+					<ul>
+						<li><b>Arquitectura unificada</b><br />(<small>JavaScript Full Stack</small>)</li>
+						<li>Código <b>reutilizable</b><br />(<small>frontend, backend y base de datos</small>)</li>
+						<li><b>Excelente</b> rendimiento y escalabilidad</li>
+						<li>Fuerte y apasionada <b>comunidad</b></li>
+						<li>Desarrolladores <b>felices</b>&nbsp;&nbsp;<div class="carita">:)</div></li>
+					</ul>
+				</div>
+				<div class="dos-columnas">
+					<img src="img/nodejs-sexy.jpg" />
+				</div>
+			</section>
+			<section>
+				<h2>Sólo considera qué...</h2>
+				<div class="dos-columnas">
+					<ul>
+						JS en el Frontend
+						<li>No me importa el S.O.</li>
+						<li>No hay datos binarios</li>
+						<li>Apenas hay E/S</li>
+						<li>Un único usuario</li>
+						<li>Todo es accesible con objetos y valores primitivos</li>
+					</ul>
+				</div>
+				<div class="dos-columnas">
+					<ul>
+						JS en el Backend
+						<li>Llamadas al S.O.</li>
+						<li>Muchos datos binarios</li>
+						<li>Muchas E/S</li>
+						<li>Usuarios y permisos</li>
+						<li>Puertos y Servidores</li>
+						<li>Middlewares</li>
+						<li>...</li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h2>Requisitos Clase 2</h2>
+			</section>
+			<section>
+				<h2>Instalación</h2>
+				<ul>
+					<li><a href="http://nodejs.org/" target="_blank">nodejs.org</a></li>
+					<br />
+					<li><a href="https://github.com/joyent/node/wiki/Installation" target="_blank">pasos a seguir</a></li>
+					<br />
+					<li>versión &gt; 0.10.0</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Probando Instalación</h2>
+				<ul>
+					<li>Abrir una terminal de comandos</li>
+					<li><b><code>node -v</code></b></li>
+					<li><b><code>npm -v</code></b></li>
+				</ul>
+				<br /><br />
+				<h2>Terminal de Comandos</h2>
+				<ul>
+					<li><a href="http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/" target="_blank">Linux/Mac</a></li>
+					<li><a href="http://ss64.com/nt/index.html" target="_blank">Windows</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Recomendaciones</h2>
+				<ul>
+					<li>
+						Recuerda que para el correcto funcionamiento de Node.JS tu usuario debe ser <b>Administrador</b> del Equipo
+					</li>
+					<br />
+					<li>
+						Si tu terminal no reconoce los comandos:
+						<ul>
+							<li>
+								En Mac o Linux debes ejecutarlos con el comando <b><code>sudo</code></b>
+							</li>
+							<li>
+								En Windows, reinicia y verifica que en las variables de entorno exista <b>NODE_PATH</b>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Estudien:</h2>
+				<ul>
+					<li>
+						<a href="http://librosweb.es/ajax/capitulo_7.html" target="_blank">AJAX</a>
+					</li>
+					<li>
+						<a href="http://es.wikipedia.org/wiki/Anexo:Códigos_de_estado_HTTP" target="_blank">Códigos de Estado HTTP</a>
+					</li>
+					<li>
+						<a href="http://es.wikipedia.org/wiki/Multipurpose_Internet_Mail_Extensions" target="_blank">Extensiones MIME</a>
+					</li>
+					<li>
+						<a href="http://sites.utoronto.ca/webdocs/HTMLdocs/Book/Book-3ed/appb/mimetype.html" target="_blank">Tipos de MIME</a>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>BE NODE.JS</h2>
+				<div>
+					<img src="img/sending-message-nodejs.jpg" />
+				</div>
+			</section>
+			<section>
+				<h1>Clase 2</h1>
+			</section>
+			<section>
+				<h1>El core de Node.JS</h1>
+				<div>
+					<img src="img/core-nodejs.jpg" style="max-width:70%;" />
+				</div>
+			</section>
+			<section>
+				<p>
+					El núcleo de Node.JS esta formado por <b>35 módulos</b>
+				</p>
+				<p>
+					Es importante revisar su nivel de estabilidad al usarlos:
+					<ul>
+						<li>0 - Deprecated</li>
+						<li>1 - Experimental</li>
+						<li>2 - Unstable</li>
+						<li>3 - Stable</li>
+						<li>4 - API Frozen</li>
+						<li>5 - Locked</li>
+					</ul>
+				</p>
+				<p>
+					Toda la información del núcleo está en el <a href="https://nodejs.org/api/" target="_blank">API DOCS</a>
+				</p>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li><a href="https://nodejs.org/api/globals.html" target="_blank">Globals</a></li>
+					<li><a href="https://nodejs.org/api/process.html" target="_blank">Process</a></li>
+					<li><a href="https://nodejs.org/api/http.html" target="_blank">HTTP</a></li>
+					<li><a href="https://nodejs.org/api/buffer.html" target="_blank">Buffer</a></li>
+					<li><a href="https://nodejs.org/api/stream.html" target="_blank">Stream</a></li>
+					<li><a href="https://nodejs.org/api/fs.html" target="_blank">File System</a></li>
+					<li><a href="https://nodejs.org/api/events.html" target="_blank">Events</a></li>
+					<li><a href="https://nodejs.org/api/util.html" target="_blank">Util</a></li>
+					<li><a href="https://nodejs.org/api/timers.html" target="_blank">Timers</a></li>
+					<li><a href="https://nodejs.org/api/modules.html" target="_blank">Módulos (<small>require/exports</small>)</a></li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 3</h1>
+			</section>
+			<section>
+				<h1>Más core</h1>
+				<div>
+					<img src="img/mas-core-nodejs.jpg" />
+				</div>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li><a href="https://nodejs.org/api/path.html" target="_blank">Path</a></li>
+					<li><a href="https://nodejs.org/api/url.html" target="_blank">URL</a></li>
+					<li><a href="https://nodejs.org/api/querystring.html" target="_blank">Query String</a></li>
+					<li>Servir archivos estáticos</li>
+					<li>Rutas y URL's amigables</li>
+					<li>Cliente HTTP</li>
+					<li>Sniffer</li>
+					<li>Formularios</li>
+					<li>GET y POST</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 4</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>NPM</li>
+					<li>Módulos / Paquetes</li>
+					<li>El archivo <b>package.json</b></li>
+				</ul>
+			</section>
+			<section>
+				<h2><a href="https://www.npmjs.com/" target="_blank">NPM</a></h2>
+				<p><b>Node Package Manager</b></p>
+				<p>Es el gestor de paquetes de Node.JS</p>
+				<div>
+					<img src="img/modulos-nodejs.jpg" style="max-width:70%;" />
+				</div>
+			</section>
+			<section>
+				<h2>Instalando paquetes</h2>
+				<h3>Tipos de Instalación</h3>
+			</section>
+			<section>
+				<ul>
+					<li>
+						Única: <code>npm install nombre-paquete</code> (<small>no se recomienda</small>)
+					</li>
+					<br />
+					<li class="fragment">
+						Global: <code>npm install nombre-paquete <b>-g</b></code>
+					</li>
+					<br />
+					<li class="fragment">
+						Como dependencia del proyecto:<br />
+						<code>npm install nombre-paquete <b>--save</b></code>
+					</li>
+					<br />
+					<li class="fragment">	
+						Como dependencia de desarrollo:<br />
+						<code>npm install nombre-paquete <b>--save-dev</b></code>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Paquetes Globales</h2>
+				<ul>
+					<li>Se instalan localmente en nuestro ordenador</li>
+					<li>Estan disponibles en todo momento</li>
+					<li>Son paquetes que nos ayudarán con tareas administrativas (<small>monitoreo, depuración, automatización, etc.</small>)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Paquetes Globales</h2>
+				<ul>
+					<li>
+						<a href="https://www.npmjs.com/package/node-inspector" target="_blank">node-inspector</a>
+						<code class="fragment">(<small>node-debug miArchivo.js</small>)</code>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/supervisor" target="_blank">supervisor</a>
+						<code class="fragment">(<small>supervisor miArchivo.js</small>)</code>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/nodemon" target="_blank">nodemon</a>
+						<code class="fragment">(<small>nodemon miArchivo.js</small>)</code>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/forever" target="_blank">forever</a>
+						<code class="fragment">(<small>forever start/stop miArchivo.js</small>)</code>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/pm2" target="_blank">pm2</a>
+						<code class="fragment">(<small>pm2 start/stop miArchivo.js</small>)</code>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Dependencias del Proyecto</h2>
+				<ul>
+					<li>Paquetes externos al <b>core</b></li>
+					<li>Desarrollados por la comunidad</li>
+					<li>Al instalarlos quedan registrados en el achivo de configuración (<small><code>package.json</code></small>)</li>
+				</ul>
+			</section>
+			<section>
+				<h2 style="text-transform: lowercase !important">
+					<a href="https://docs.npmjs.com/files/package.json" target="_blank">package.json</a>
+				</h2>
+				<ul>
+					<li class="fragment">creación (<small><code>npm init</code></small>)</li>
+					<li class="fragment"><a href="http://browsenpm.org/package.json" target="_blank">configuración</a></li>
+					<li class="fragment">
+						instalar paquetes como dependencias:<br />
+						<small><code>npm install nombre-paquete <b>--save</b></code></small>
+					</li>
+					<li class="fragment">
+						instalar dependencias de un proyecto:<br />
+						<small><code>npm install</code></small><br />
+						(<small>Debe existir el archivo package.json</small>)
+					</li>
+					<li class="fragment">Revisar <a href="http://semver.org/" target="_blank">Semantic Versioning</a> para el correcto versionado de nuestros paquetes.</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Paquetes como dependencias</h2>
+				<ul>
+					<li>Subir Archivos
+						<ul>
+							<li><a href="https://www.npmjs.com/package/formidable" target="_blank">formidable</a></li>
+							<li><a href="https://www.npmjs.com/package/fs-extra" target="_blank">fs-extra</a></li>		
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 5</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul><li>Promesas</li></ul>
+			</section>
+			<section>
+				<p>Node.js maneja la asincronía utilizando callbacks</p>
+				<ul>
+					<li>Continuaciones explícitas como funciones</li>
+					<li>Cuando termines... ejecuta otra función</li>
+				</ul>
+			</section>
+			<section>
+				<p>Los callbacks tienen muchas ventajas</p>
+				<ul>
+					<li>Muy fáciles de entender e implementar</li>
+					<li>Familiares para el programador JS</li>
+					<li>Extremadamente flexibles</li>
+					<li>Un mecanismo universal de asincronía</li>
+				</ul>
+			</section>
+			<section>
+				<h1>PERO...</h1>
+			</section>
+			<section>
+				<h2><a href="http://callbackhell.com" target="_blank">Callback Hell</a></h2>
+				<div class="dos-columnas">
+					<img src="img/callback-hell.png" />
+				</div>
+				<div class="dos-columnas">
+					<img src="img/callback-mac.jpg" style="max-width:80%;" />
+				</div>
+			</section>
+			<section>
+				<h2>Callbacks VS Promesas</h2>
+				<div>
+					<img src="img/callbacks-vs-promise.png" />
+				</div>
+			</section>
+			<section>
+				<h2>Promesas</h2>
+				<p>Una manera alternativa de modelar asincronía</p>
+				<ul>
+					<li>Construcción explícita del flujo de ejecución</li>
+					<li>Separación en bloques consecutivos</li>
+					<li>Manejo de errores más controlado</li>
+					<li>Combinación de diferentes flujos asíncronos</li>
+				</ul>
+			</section>
+			<section>
+				<h2>promesa = flujo de ejecución</h2>
+			</section>
+			<section>
+				<h2>Promesas</h2>
+				<h3>Ventajas</h3>
+				<ul>
+					<li>Código mucho más ordenado y legible</li>
+					<li>Mejor control de errores</li>
+					<li>Podemos manipular el flujo</li>
+					<li>Añadir nuevas etapas</li>
+					<li>Devolverlo en funciones</li>
+					<li>Pasarlo como parámetro</li>
+					<li>Podemos combinar varios flujos</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Promesas</h2>
+				<h3>¿Cómo lo hace?</h3>
+			</section>
+			<section>
+				<ul>
+					<li>
+						.then(succes,[error])
+						<ul>
+							<li>Concatena bloques</li>
+							<li>
+								El nuevo bloque (success)...
+								<ul>
+									<li>Sólo se ejecuta si el anterior lo hace sin errores</li>
+									<li>Recibe como parámetro el resultado del bloque anterior</li>
+									<li>
+										Devuelve el valor que se le pasará al siguiente bloque
+										<ul>
+											<li>Si es un dato, se pasa tal cual</li>
+											<li>Si es una promesa, se resuelve</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						.fail(error)
+						<ul>
+							<li>El segundo parámetro es un manejador de error</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<p>Las promesas se resuelven o se rechazan y se dividen en 2:</p>
+				<ul>
+					<li>
+						La promesa en sí
+						<ul>
+							<li>Interfaz que construye flujos</li>
+							<li>(<small>.then y .fail</small>)</li>
+						</ul>
+					</li>
+					<li>
+						Su diferido
+						<ul>
+							<li>Interfaz que controla los flujos</li>
+							<li>(<small>.reject y .resolve</small>)</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<p>Casi todos los módulos de Node.JS que realizan una operación asíncrona siguen el mismo flujo:</p>
+				<ul>
+					<li>Reciben una callback como último parámetro</li>
+					<li>
+						El callback recibe uno o más parámetros:
+						<ul>
+							<li>
+								Generalmente el primero indica si hay error:
+								<ul>
+									<li>Si es falso todo OK</li>
+									<li>Si es verdadero es el Error</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Paquetes como dependencias</h2>
+				<ul>
+					<li>Promesas
+						<ul>
+							<li><a href="https://www.npmjs.com/package/q" target="_blank">q</a></li>
+							<li><a href="https://github.com/kriskowal/q/wiki/API-Reference" target="_blank">API q</a></li>	
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 6</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul><li>Dependencias de Desarrollo</li></ul>
+			</section>
+			<section>
+				<h2>Dependencias de Desarrollo</h2>
+				<ul>
+					<li>Paquetes externos al <b>core</b></li>
+					<li>Desarrollados por la comunidad</li>
+					<li>Facilitan y optimizan tareas comunes de desarrollo y publicación</li>
+					<li>Al instalarlos quedan registrados en el <code>package.json</code></li>
+					<li><code>npm install nombre-paquete <b>--save-dev</b></code></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Dependencias de Desarrollo</h2>
+				<ul>
+					<li><a href="http://gruntjs.com/" target="_blank">grunt</a></li>
+					<li><a href="http://gulpjs.com/" target="_blank">gulp</a></li>
+					<li><a href="http://bower.io/" target="_blank">bower</a></li>
+					<li><a href="https://learnboost.github.io/stylus/" target="_blank">stylus</a></li>
+					<li><a href="http://lesscss.org/" target="_blank">less</a></li>
+					<li><a href="http://browserify.org/" target="_blank">browserify</a></li>
+					<li><a href="http://jshint.com/" target="_blank">jshint</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Sistemas de Construcción</h2>
+				<h3>Build Systems</h3>
+			</section>
+			<section>
+				<p>
+					Permiten automatizar tareas comunes de desarrollo, tales como la minificación de código, recarga del navegador, compresión de imágenes, validación de sintaxis de código y un sin fin de tareas más
+				</p>
+				<br />
+				<p>
+					No importa si eres un desarrollador Frontend, Backend o ambos. Si hoy en día no quieres perder tiempo realizando tareas comunes manualmente, debes usarlos.
+				</p>
+			</section>
+			<section>
+				<h2>Configuración VS Código</h2>
+				<img src="img/grunt-vs-gulp.jpeg" />
+			</section>
+			<section>
+				<h2>Grunt</h2>
+				<img src="img/grunt-file-manipulation.png" />
+			</section>
+			<section>
+				<h2>Gulp</h2>
+				<img src="img/gulp-file-manipulation.png" />
+			</section>
+			<section>
+				<h2>Bower</h2>
+				<p>Gestor de paquetes para la web</p>
+				<p>(<small>frameworks, librerías, utilidades, recursos, etc.</small>)</p>
+				<ul>
+					<li><code>npm install bower -g</code></li>
+					<li><code>bower install nombre-paquete</code></li>
+					<li><code>bower init</code></li>
+					<li><code><a href="http://bower.io/docs/creating-packages/#bowerjson" target="_blank">bower.json</a></code></li>
+					<li><code>bower install nombre-paquete --save</code></li>
+					<li><code>bower install</code></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Preprocesadores CSS</h2>
+				<ul>
+					<li>Compilando less<br /><code>archivo.less > archivo.css</code></li>
+					<br />
+					<li>Compilando stylus<br /><code>stylus -c archivo.styl archivo.css</code></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Browserify</h2>
+				<p>Permite requerir dependencias y librerías del navegador como módulos de Node.JS</p>
+				<ul>
+					<li><code>browserify main.js > bundle.js</code></li>
+				</ul>
+			</section>
+			<section>
+				<h2>JSHint</h2>
+				<p>Detección de Errores JS</p>
+				<ul>
+					<li><a href="http://jshint.com/docs/options/" target="_blank">Configuración</a></li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 7</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Optimizando un proyecto Frontend con módulos JS</li>
+					<li>Frameworks Web para Node.JS</li>
+					<li>Introducción a Express</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Optimizando un proyecto Frontend con módulos JS</h3>
+				<ul>
+					<li>
+						<a href="https://www.npmjs.com/package/bower" target="_blank">bower</a>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/gulp" target="_blank">gulp</a>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/gulp-concat" target="_blank">gulp-concat</a>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/gulp-connect" target="_blank">gulp-connect</a>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/gulp-imagemin" target="_blank">gulp-imagemin</a>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/gulp-minify-css" target="_blank">gulp-minify-css</a>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/gulp-uglify" target="_blank">gulp-uglify</a>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/gulp-useref" target="_blank">gulp-useref</a>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Aplicaciones Web con Node.JS</h1>
+			</section>
+			<section>
+				<h2>Frameworks</h2>
+				<p>
+					es un marco de herramientas diseñado para apoyar el desarrollo de sitios dinámicos, aplicaciones y servicios web. Intenta aliviar el exceso de carga asociado con actividades comunes usadas en el desarrollo web. Por ejemplo, acceder a bases de datos, estructuras para plantillas y gestión de sesiones, y con frecuencia facilitan la reutilización de código.
+				</p>
+			</section>
+			<section>
+				<h2>Frameworks Node.JS</h2>
+				<ul>
+					<li><a href="http://expressjs.com/" target="_blank">Express</a></li>
+					<li><a href="http://sailsjs.org/" target="_blank">Sails</a></li>
+					<li><a href="http://hapijs.com/" target="_blank">Hapi</a></li>
+					<li><a href="http://locomotivejs.org/" target="_blank">Locomotive</a></li>
+					<li><a href="http://koajs.com/" target="_blank">Koa</a></li>
+					<li><a href="http://krakenjs.com/" target="_blank">Kraken</a></li>
+					<li><a href="http://express-io.org/" target="_blank">Express.IO</a></li>
+					<li><a href="http://www.socketstream.org/" target="_blank">SocketStream</a></li>
+					<li><a href="http://geddyjs.org/" target="_blank">Geddy</a></li>
+					<li><a href="https://www.totaljs.com/" target="_blank">Total</a></li>
+					<li><a href="http://www.partialjs.com/" target="_blank">Partial</a></li>
+					<li><a href="http://flatironjs.org/" target="_blank">Flatiron</a></li>
+				</ul>
+			</section>
+			<section>
+				<h1>Express</h1>
+			</section>
+			<section>
+				<h2>Express</h2>
+				<ul>
+					<li>Estrictamente web (microframework)</li>
+					<li>Sencillo, flexible y minimalista</li>
+					<li>Muy popular</li>
+					<li>Se adapta muy bien a la filosofía de Node</li>
+					<li>Similar a Sinatra, Sylex, Flask, Spark, etc.</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Express nos va ayudar con:</h2>
+				<ul>
+					<li>Rutas</li>
+					<li>Parámetros</li>
+					<li>Formularios y subida de ficheros</li>
+					<li>Cookies</li>
+					<li>Sesiones</li>
+					<li>Templates</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Express <b>NO</b> nos va ayudar con:</h2>
+				<ul>
+					<li>Base de datos / ORM</li>
+					<li>Autenticación de usuarios</li>
+					<li>Seguridad</li>
+					<li>Migraciones</li>
+					<li>Deployment</li>
+					<li>Organización del código</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Concretamente Express:</h2>
+				<ul>
+					<li>Construye sobre http</li>
+					<li>
+						Procesa la petición a través middlewares
+						<ul>
+							<li>Asocia rutas a manejadores</li>
+							<li>Procesa los objetos req y res</li>
+							<li>Visualiza templates</li>
+						</ul>
+					</li>
+					<li>Nosotros escogemos qué middlewares queremos usar, y en qué orden</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Qué nos aporta express, exactamente?</h2>
+				<ul>
+					<li>Depende de los middlewares que usemos</li>
+					<li>Algunas cosas vienen por defecto</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Let's to Code! \<div class="carita">XD</div>/</h1>
+				<p>
+					Pero... <b>NO</b> te olvides del <a href="http://expressjs.com/4x/api.html" target="_blank">API Doc</a>
+				</p>
+			</section>
+			<section>
+				<h1>Clase 8</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul><li>Fundamentos de Express</li></ul>
+			</section>
+			<section>
+				<h2>Express API:</h2>
+				<ul>
+					<li><a href="http://expressjs.com/4x/api.html#express" target="_blank">Express</a></li>
+					<li><a href="http://expressjs.com/4x/api.html#app" target="_blank">Application</a></li>
+					<li><a href="http://expressjs.com/4x/api.html#req" target="_blank">Require</a></li>
+					<li><a href="http://expressjs.com/4x/api.html#res" target="_blank">Response</a></li>
+					<li><a href="http://expressjs.com/4x/api.html#router" target="_blank">Router</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Configurando la aplicación</h2>
+				<ul>
+					<li>Crear algunas propiedades globales</li>
+					<li>Especificar el stack de middlewares</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Cómo la configuramos?</h2>
+				<ul>
+					<li>Estableciendo: <code>app.set(propiedad, valor)</code></li>
+					<li>Obteniendo: <code>app.get(propiedad)</code></li>
+					<li>Usando: <code>app.use(middleware)</code></li>
+				</ul>
+			</section>
+			<section>
+				<h2><a href="http://expressjs.com/guide/using-middleware.html" target="_blank">Middleware</a></h2>
+				<p>
+					Son módulos <b>“plug and play”</b> que se pueden apilar arbitrariamente en cualquier orden y proveen cierta funcionalidad
+				</p>
+				<br />
+				<ul>
+					<li>
+						<b>Filtros:</b> procesan tráfico entrante/saliente, pero no responden a ninguna petición. Por ejemplo <code>bodyParser</code>
+					</li>
+					<li>
+						<b>Proveedores:</b> ofrecen respuestas automáticas a algún tipo de petición. Por ejemplo <code>static</code>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Middlewares</h2>
+				<p>Escribir middlewares para express es muy sencillo:</p>
+				<ul>
+					<li>
+						Una función que recibe 3 parámetros:
+						<b><code>req, res, next</code></b>
+					</li>
+					<li>
+						Al terminar su tarea, tiene que invocar a next()
+						<ul>
+							<li><b>Sin parámetro</b>: se invoca al siguiente middleware del stack</li>
+							<li><b>Con parámetro</b>: se cambia la ruta a lo que se pase como parámetro</li>
+						</ul>
+					</li>
+					<li>
+						Dos maneras de activar middlewares:
+						<ul>
+							<li><b>Globalmente</b> (<small>app.use</small>), activos para toda la app</li>
+							<li><b>Locales</b> para ciertas rutas</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Express se ayuda de paquetes adicionales, para mantener su core simple y minimalista</h3>
+			</section>
+			<section>
+				<h2 style="text-transform:none !important;"><a href="https://www.npmjs.com/package/favicon" target="_blank">favicon(ruta)</a></h2>
+				<p>Sirve el favicon de la aplicación</p>
+				<ul>
+					<li>Debe ser el primero</li>
+					<li>Para evitar peticiones inncesarias</li>
+				</ul>
+			</section>
+			<section>
+				<h2 style="text-transform:none !important;"><a href="http://www.senchalabs.org/connect/logger.html" target="_blank">logger([opciones])</a></h2>
+				<p>Registro de Actividad</p>
+				<ul>
+					<li>Muchas opciones...</li>
+					<li>Se suele poner debajo de <code>express.favicon()</code></li>
+				</ul>
+			</section>
+			<section>
+				<h2 style="text-transform:none !important;"><a href="https://www.npmjs.com/package/cookie-parser" target="_blank">cookieParser([secreto])</a></h2>
+				<p>Parsea las cookies de la petición</p>
+				<ul>
+					<li>Opcional: firmar cookies con secreto</li>
+					<li>Crea el objeto req.cookies</li>
+				</ul>
+			</section>
+			<section>
+				<h2 style="text-transform:none !important;"><a href="https://www.npmjs.com/package/body-parser" target="_blank">bodyParser()</a></h2>
+				<p>Parsea el cuerpo de las peticiones</p>
+				<ul>
+					<li>
+						Decodifica
+						<ul>
+							<li>application/json</li>
+							<li>application/x-www-form-urlencoded</li>
+							<li>multipart/form-data</li>
+						</ul>
+					</li>
+					<li>Crea el objeto req.body con los parámetros</li>
+					<li>Crea el objeto req.files con los ficheros que se han subido desde un formulario</li>
+				</ul>
+			</section>
+			<section>
+				<h2 style="text-transform:none !important;"><a href="https://www.npmjs.com/package/cookie-session" target="_blank">cookieSession([opciones])</a></h2>
+				<p>Inicializa y parsea los datos de sesión del usuario</p>
+				<ul>
+					<li>Crea el objeto req.session</li>
+					<li>Utilizando cookies como almacenamiento</li>
+					<li>
+						Algunas opciones:
+						<ul>
+							<li>secret: firma de segurdad para la cookie</li>
+							<li>maxAge: duración en ms</li>
+							<li>path: ruta para la que es válida la cookie</li>
+							<li>httpOnly: protección solo en el protocolo http</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2 style="text-transform:none !important;"><a href="http://expressjs.com/4x/api.html#express.static" target="_blank">express.static(directorio)</a></h2>
+				<p>Sirve los ficheros estáticos dentro de directorio</p>
+				<ul>
+					<li>¡Muy útil! Se pone cerca del final</li>
+					<li>Cachea los ficheros</li>
+					<li>La variable global <code>__dirname</code> contiene el directorio donde reside el script en ejecución</li>
+				</ul>
+			</section>
+			<section>
+				<h2><a href="http://expressjs.com/starter/generator.html" target="_blank">Generador de Express</a></h2>
+				<p><code>npm install express-generator -g</code></p>
+				<p><code>express miAppExpress</code></p>
+			</section>
+			<section>
+				<h1>Clase 9</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Templates Engines (<small>Motores de Plantillas</small>)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Templates Engines</h2>
+				<p>Express tiene un mecanismo para renderizar plantillas</p>
+				<ul>
+					<li>Agnóstico</li>
+					<li>Modular</li>
+					<li>Simple</li>
+					<li>NO trae ningún motor de templates por defecto</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Templates Engines</h2>
+				<p><code>res.render(view, [locals], callback)</code></p>
+				<ul>
+					<li>view: ruta del template</li>
+					<li>locals: valores a interpolar</li>
+					<li>callback: <code>function(err, html) { ... }</code></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Templates Engines</h2>
+				<p>Tenemos muchos motores de plantillas para elegir</p>
+				<p>Nosotros aprenderemos:</p>
+				<ul>
+					<li><a href="http://jade-lang.com/" target="_blank">Jade</a></li>
+					<li><a href="http://www.embeddedjs.com/" target="_blank">EJS</a></li>
+				</ul>
+				<p>Pero hay más <a href="https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/" target="_blank">opciones</a></p>
+			</section>
+			<section>
+				<h1>Clase 10</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Web Scraping (<small>Extracción de Información Web</small>)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Web Scraping</h2>
+				<p>
+					es el proceso de recopilar información de forma automática de la Web. Está muy relacionado con la indexación, es una técnica universal adoptada por la mayoría de los motores de búsqueda.
+				</p>
+			</section>
+			<section>
+				<h2>Web Scraping</h2>
+				<p>
+					El término también está relacionado con la automatización de tareas en la Web, la cual simula la navegación de un humano utilizando un software de computadora.
+				</p>
+			</section>
+			<section>
+				<h2>Web Scraping</h2>
+				<p>
+					El web scraping pudiera ir en contra de los términos de uso de algunos sitios webs. El cumplimiento de estos términos no está totalmente claro.
+				</p>
+				<h2 class="carita">=P</h2>
+			</section>
+			<section>
+				<h2>Paquetes para Web Scraping:</h2>
+				<ul>
+					<li>
+						<a href="https://www.npmjs.com/package/express" target="_blank">express</a>
+						<b class="fragment">(<small>Como Framework Web</small>)</b>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/request" target="_blank">request</a>
+						<b class="fragment">(<small>Para obtener el código HTML de la petición</small>)</b>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/cheerio" target="_blank">cheerio</a>
+						<b class="fragment">(<small>Para usar jQuery en el backend y obtener información de la petición</small>)</b>
+					</li>
+					<li>
+						<a href="https://www.npmjs.com/package/q" target="_blank">q</a>
+						<b class="fragment">(<small>Para implementar promesas a la aplicación</small>)</b>
+					</li>		
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 11</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Web Scraping mejorado con promesas</li>
+					<li>Ghost</li>
+				</ul>
+			</section>
+			<section>
+				<h2><a href="https://ghost.org/" target="blank">Ghost</a></h2>
+				<ul>
+					<li>Es la plataforma de blog de Node.JS</li>
+					<li>Es libre y de código abierto</li>
+					<li>Creada por <a href="https://twitter.com/JohnONolan">John O'Nolan</a> en 2013</li>
+					<li>¿Es el WordPress de Node.JS?</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Un poco de Historia:</h3>
+				<ul>
+					<li>O'Nolan era el lider adjunto del equipo de interfaz de usuario de WordPress</li>
+					<li>En noviembre de 2012 al sentirse frustrado de usar WordPress como plataforma de blogs comienza a gestar una plataforma que fuera más simple, sencilla y limpia</li>	
+					<li>En abril de 2013 comienza una campaña de crowdfunding en Kickstarter para comenzar Ghost</li>
+					<li>En septiembre de 2013 se libera la primer versión de Ghost</li>
+					<li>En octubre de 2013 se libera el código en <a href="https://github.com/TryGhost/Ghost" target="_blank">github</a></li>
+				</ul>
+			</section>
+			<section>
+				<h3>¿Porqué Ghost, teniendo WordPress?</h3>
+				<ul>
+					<li>WordPress es <a href="http://john.onolan.org/project-ghost/" target="_blank">más</a> que sólo una plataforma de Blog</li>
+					<li>Algunas diferencias <a href="http://www.elegantthemes.com/blog/resources/wordpress-vs-ghost" target="_blank">interesantes</a></li>
+				</ul>
+			</section>
+			<section>
+				<h1>Let's to Blog! \<div class="carita">XD</div>/</h1>
+				<p>
+					Pero... <b>NO</b> te olvides de la <a href="http://support.ghost.org/user-guide/" target="_blank">User Guide</a>
+				</p>
+			</section>
+			<section>
+				<h1>Clase 12</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Persistencia de Datos con Node.JS</li>
+					<li>API's CRUD</li>
+					<li>API's REST</li>
+					<li>Gestores de Bases de Datos</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Persistencia de Datos</h2>
+			</section>
+			<section>
+				<h2>Aplicaciones CRUD</h2>
+				<br />
+				<h3>VS</h3>
+				<br />
+				<h2>Aplicaciones REST</h2>
+			</section>
+			<section>
+				<h2><a href="http://es.wikipedia.org/wiki/Representational_State_Transfer" target="_blank">REST</a></h2>
+				<br />
+				<h4>Representational State Transfer</h4>
+				<br />
+				<h4>Transferencia de Estado Representacional</h4>
+			</section>
+			<section>
+				<h2>REST</h2>
+				<p>
+					Es una técnica de arquitectura software para sistemas hipermedia distribuidos como Internet
+				</p>
+				<br />
+				<p>
+					El término lo acuña Roy Fielding en su tesis doctoral del año 2000 sobre la web
+				</p>
+				<br />
+				<p>
+					Es uno de los principales autores de la especificación del protocolo HTTP
+				</p>
+			</section>
+			<section>
+				<p>REST se basa en las operaciones del protocolo HTTP</p>
+				<p>
+					REST afirma que la web ha disfrutado de escalabilidad como resultado de una serie de diseños fundamentales clave:
+				</p>
+				<br />
+				<ul>
+					<li>
+						Un protocolo cliente/servidor sin estado
+						<!-- Como resultado, ni el cliente ni el servidor necesitan recordar ningún estado de las comunicaciones entre mensajes. Sin embargo, en la práctica, muchas aplicaciones basadas en HTTP utilizan cookies y otros mecanismos para mantener el estado de la sesión (algunas de estas prácticas, como la reescritura de URLs, no son permitidas por REST) -->
+					</li>
+					<li>
+						Un conjunto de operaciones bien definidas que se aplican a todos los recursos de información
+						<!-- HTTP en sí define un conjunto pequeño de operaciones, las más importantes son POST, GET, PUT y DELETE. Con frecuencia estas operaciones se equiparan a las operaciones CRUD en bases de datos (ABMC en castellano: Alta, Baja, Modificación y Consulta) que se requieren para la persistencia de datos, aunque POST no encaja exactamente en este esquema -->
+					</li>
+					<li>
+						Una sintaxis universal para identificar los recursos
+						<!-- En un sistema REST, cada recurso es direccionable únicamente a través de su URI -->
+					</li>
+					<li>
+						El uso de hipermedios
+						<!-- tanto para la información de la aplicación como para las transiciones de estado de la aplicación: la representación de este estado en un sistema REST son típicamente HTML o XML. Como resultado de esto, es posible navegar de un recurso REST a muchos otros, simplemente siguiendo enlaces sin requerir el uso de registros u otra infraestructura adicional -->
+					</li>
+				</ul>
+			</section>
+			<section>
+				<p>Los sistemas que siguen los principios REST se llaman con frecuencia <b>RESTful</b></p>
+				<br />
+				<p>Los estados HTTP de una API REST son:</p>
+				<ul>
+					<li><h3>POST</h3></li>
+					<li><h3>GET</h3></li>
+					<li><h3>PUT</h3></li>
+					<li><h3>DELETE</h3></li>
+				</ul>
+			</section>
+			<section>
+				<p>Más informción sobre REST:</p>
+				<br />
+				<ul>
+					<li><a href="http://www.desarrolloweb.com/articulos/que-es-rest-caracteristicas-sistemas.html" target="_blank">¿Qué es REST?</a></li>
+					<br />
+					<li><a href="http://www.desarrolloweb.com/articulos/ventajas-inconvenientes-apirest-desarrollo.html" target="_blank">Ventajas y Desventajas de API REST</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>CRUD</h2>
+				<h4>Create, Read, Update and Delete</h4>
+				<br />
+				<h2>ABCC</h2>
+				<h4>Altas, Bajas, Cambios y Consultas</h4>
+				<br />
+				<p>
+					En computación se usa para referirse a las funciones básicas que un sistema utiliza para interactuar con su capa de persistencia (bases de datos).
+				</p>
+			</section>
+			<section>
+				<h3>Persistencia en Node.JS</h3>
+				<p>
+					Prácticamente se puede trabajar con cualquier base de datos: Transaccionales, Relacionales, Documentales, Orientada a Objetos, Clave/Valor, de Grafos, etc.
+				</p>
+			</section>
+			<section>
+				<p>En el curso trabajaremos con:</p>
+				<div>
+					<article class="dos-columnas">
+						<a href="http://www.mongodb.org/" target="blank">
+							<img src="img/MongoDB.png" />
+						</a>
+					</article>
+					<article class="dos-columnas">
+						<a href="http://www.mysql.com/" target="blank">
+							<img src="img/MySQL.png" />
+						</a>
+					</article>
+				</div>
+				<div class="fragment">
+					<article class="dos-columnas">
+						Base de Datos Documental
+					</article>
+					<article class="dos-columnas">
+						Base de Datos Transaccional
+					</article>
+				</div>
+				<div class="fragment">
+					<article class="dos-columnas">
+						(NO SQL - BSON)
+					</article>
+					<article class="dos-columnas">
+						(SQL)
+					</article>
+				</div>
+				<div class="fragment">
+					<article class="dos-columnas">
+						Colecciones y Documentos
+					</article>
+					<article class="dos-columnas">
+						Tablas y Registros
+					</article>
+				</div>
+				<div class="fragment">
+					<article class="dos-columnas">
+						<a href="http://docs.mongodb.org/manual/" target="_blank">Documentación</a>
+					</article>
+					<article class="dos-columnas">
+						<a href="http://dev.mysql.com/doc/" target="_blank">Documentación</a>
+					</article>
+				</div>
+				<div class="fragment">
+					<article class="dos-columnas">
+						<a href="http://docs.mongodb.org/manual/installation/" target="_blank">Instalación</a>
+					</article>
+					<article class="dos-columnas">
+						<a href="https://www.apachefriends.org/es/index.html" target="_blank">Instalación</a>
+					</article>
+				</div>
+				<div class="fragment">
+					<article class="dos-columnas">
+						<a href="https://www.npmjs.com/package/mongoose" target="_blank">Módulo mongoose</a>
+					</article>
+					<article class="dos-columnas">
+						<a href="https://www.npmjs.com/package/mysql" target="_blank">Módulo mysql</a>
+					</article>
+				</div>
+			</section>
+			<section>
+				<h1>Clase 13</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>API CRUD MySQL</li>
+					<li>API REST MySQL</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Módulos nuevos que emplearemos:</h2>
+				<ul>
+					<li><a href="https://www.npmjs.com/package/morgan" target="_blank">morgan</a><b class="fragment">(<small>Es un logger</small>)</b></li>
+					<li><a href="https://www.npmjs.com/package/mysql" target="_blank">mysql</a><b class="fragment">(<small>Para conectar Node.JS a MySQL</small>)</b></li>
+					<li><a href="https://www.npmjs.com/package/express-myconnection" target="_blank">express-myconnection</a><b class="fragment"><br />(<small>Para manejar las conexiones MySQL como middlewares de Express</small>)</b></li>
+					<li><a href="https://www.npmjs.com/package/express-method-override" target="_blank">express-method-override</a><br /><b class="fragment">(<small>Para implementar todos los verbos HTTP en nuestra API RESTful</small>)</b></li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 14</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>API REST MySQL con MVC</li>
+					<li>Introducción a MongoDB</li>
+				</ul>
+			</section>
+			<section>
+				<h1><img src="img/MongoDB.png" /></h1>
+			</section>
+			<section>
+				<h2>¿Qué es MongoDB?</h2>
+				<p>Una base de datos NoSQL...</p>
+				<ul>
+					<li>Sin esquema</li>
+					<li>Alto rendimiento</li>
+					<li>Almacena documentos BSON</li>
+					<li>Enfocada en escalabilidad horizontal</li>
+					<li>Lenguaje de consultas potente</li>
+					<li>Sin transacciones</li>
+					<li>Agregado de datos</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Qué es MongoDB?</h2>
+				<p>Una base de datos de documentos</p>
+				<ul>
+					<li>No impone forma a los datos</li>
+					<li>No necesita migraciones/reestructuración de la BBDD</li>
+					<li>Permite estructuras muy complejas</li>
+					<li>
+						Herramientas potentes de agregado con JavaScript
+						<ul>
+							<li>Map-Reduce</li>
+							<li>Aggregation Pipeline</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Qué es MongoDB?</h2>
+				<p>Con algunos extras interesantes...</p>
+				<ul>
+					<li>Índices geoespaciales</li>
+					<li>Búsquedas FTS</li>
+					<li>Almacenamiento eficiente de blobs y ficheros</li>
+					<li>Sharding automático</li>
+					<li>Replicación</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Qué es MongoDB?</h2>
+				<p>Es una buena alternativa para... ¡muchas cosas!</p>
+				<ul>
+					<li>Prototipos y aplicaciones simples</li>
+					<li>Hacer la transición de front a back</li>
+					<li>Aplicaciones con mucha carga de escritura</li>
+					<li>Agregado de datos a un nivel medio/alto</li>
+					<li>Aplicaciones con datos muy heterogéneos</li>
+					<li>Enormes colecciones de datos (sharding)</li>
+					<li>Almacenar ficheros (sharding)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Qué NO es MongoDB?</h2>
+				<ul>
+					<li>No puede hacer JOINs</li>
+					<li>El lenguaje de consulta menos potente que SQL</li>
+					<li>No tiene transacciones</li>
+					<li>
+						Ten cuidado:
+						<ul>
+							<li>Es muy fácil empezar con MongoDB</li>
+							<li>Si tu app crece mucho... vas a necesitar JOINs</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>MongoDB no puede hacer JOINs</h2>
+				<ul>
+					<li>Sin embargo, se pueden empotrar documentos y arrays</li>
+					<li>Profundidad y complejidad arbitraria</li>
+					<li>El límite: documento < 16MB</li>
+					<li>Se suelen favorecer los diseños desnormalizados</li>
+				</ul>
+			</section>
+			<section>
+				<h2>La idea general de MongoDB</h2>
+				<p>Es un almacén de documentos</p>
+				<ul>
+					<li>Básicamente, objetos JSON (BSON)</li>
+					<li>Dividido en colecciones</li>
+					<li>Consultas basadas en la estructura del documento</li>
+					<li>¡Se integra genial con JavaScript!</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Requisitos:</h2>
+				<ul>
+					<li><a href="http://docs.mongodb.org/manual/installation/" target="_blank">Instalar</a></li>
+					<li>Iniciar el servicio <code>mongod</code> en la terminal</li>
+					<li>Iniciar el cliente <code>mongo</code> en otra terminal</li>
+					<li><a href="http://docs.mongodb.org/manual/" target="_blank">Documentación</a></li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 15</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Primeros pasos con MongoDB</li>
+					<li>API REST MongoDB</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Cliente Mongo</h2>
+				<p>MongoDB trae un cliente de línea de comandos</p>
+				<ul>
+					<li><code>mongo host/dbname</code></li>
+					<li>Ejecuta JavaScript</li>
+					<li>Muy práctico para explorar</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Conceptos básicos</h2>
+				<ul>
+					<li>La base de datos está dividida en colecciones</li>
+					<li>Las colecciones tienen documentos</li>
+					<li>Los documentos son objetos BSON (<small>JSON Binario	</small>)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Colecciones</h2>
+				<p>Una colección es una agrupación de documentos</p>
+				<ul>
+					<li>Puede alojar cualquier documento (<small>no impone estructura</small>)</li>
+					<li>Puede alojar documentos con diferentes formas</li>
+					<li>Operaciones de consulta</li>
+					<li>Es donde se ponen los índices</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Estructura de un Documento</h2>
+				<pre>
+					<code class="javascript">
+{
+	"_id" : ObjectId("524872a99c50880000000001"),
+	"email" : "j@bextlan.com",
+	"password" : "qwerty",
+	"name" : "Jonathan",
+	"date" : 1380479657300,
+	"token" : "hm6ly43v.0o1or"
+}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<p>Un documento puede contener arreglos y otros documentos</p>
+				<pre>
+					<code class="javascript">
+{
+	"_id" : ObjectId("5249a2e9b90687d56453b2f3"),
+ 	"text" : "Soy un comentario",
+ 	"user" : {
+ 		"_id" : ObjectId("524872a99c50880000000001"),
+ 		"nombre" : "Usuario Prueba",
+ 		"avatar" : "/img/user-test.jpg"
+ 	},
+ 	"tags" : [ "test", "prueba" ]
+}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Operaciones con colecciones:</h2>
+				<ul>
+					<li><b><code>collection.save</code></b>: guardar/actualizar un documento</li>
+					<li><b><code>collection.insert</code></b>: inserta un documento</li>
+					<li><b><code>collection.findOne</code></b>: recuperar un documento</li>
+					<li><b><code>collection.find</code></b>: recuperar varios documentos</li>
+					<li><b><code>collection.remove</code></b>: borrar uno o varios documentos</li>
+					<li><b><code>collection.drop</code></b>: elimina la colección</li>
+					<li><b><code>collection.rename</code></b>: cambia de nombre la colección</li>
+					<li><b><code>collection.count</code></b>: número de documentos</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Operadores de Búsqueda:</h2>
+				<ul>
+					<li><b><code>$gt / $gte</code></b>: mayor/mayor o igual</li>
+					<li><b><code>$lt / $lte</code></b>: menor/menor o igual</li>
+					<li><b><code>$ne</code></b>: diferente</li>
+					<li><b><code>$in / $nin</code></b>: en/no en array de valores</li>
+				</ul>
+				<pre>
+					<code class="javascript">
+micol.findOne({ valor: {$in:[5,15]} }, cb)
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Operadores Lógicos:</h2>
+				<ul>
+					<li><b><code>$or</code></b>: se cumple alguna cláusula</li>
+					<li><b><code>$and</code></b>: se cumplen todas las cláusulas</li>
+					<li><b><code>$nor</code></b>: el resultado opuesto</li>
+					<li><b><code>$not</code></b>: no se cumplen todas las cláusulas</li>
+				</ul>
+				<pre>
+					<code class="javascript">
+micol.findOne({
+	$or:[
+		{valor: 5},
+		{
+			precio:{ $gt: 15 }
+		}
+	]
+},callback)
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>
+					<a href="http://docs.mongodb.org/manual/reference/operator/query/" target="_blank">Más operadores interesantes</a>
+				</h2>
+			</section>
+			<section>
+				<h2>Consulta</h2>
+				<p>El operador find(...) devuelve un cursor</p>
+				<ul>
+					<li>Representa un conjunto de resultados</li>
+					<li><b><code>cursor.count(cb)</code></b>: cantidad de documentos</li>
+					<li><b><code>cursor.limit(n)</code></b>: limitar a n documentos</li>
+					<li><b><code>cursor.skip(n)</code></b>: saltarse los n primeros documentos</li>
+					<li><b><code>cursor.nextObject(cb)</code></b>: siguiente documento</li>
+					<li><b><code>cursor.each(cb)</code></b>: para cada doc, en orden</li>
+					<li><b><code>cursor.toArray(cb)</code></b>: convierte el cursor en array</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Ordenación</h2>
+				<p>cursor.sort(opciones, [cb])</p>
+				<ul>
+					<li>Ordenar los resultados</li>
+					<li>Opciones del tipo:</li>
+					<ul>
+						<li>[[“campo”, 1], [“otroCampo”, -1]]</li>
+						<li>1 para ascendente, -1 para descendente</li>
+					</ul>
+				</ul>
+				<pre>
+					<code class="javascript">
+coleccion.find()
+	.sort([['a', -1]])
+ 	.nextObject(function(err, item) {
+ 		// ...
+ 	})
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Inserción</h2>
+				<p>insert(&lt;documento o array&gt;)</p>
+				<ul>
+					<li>Inserta uno o varios documentos en la colección</li>
+				</ul>
+				<pre>
+					<code class="javascript">
+db.micol.insert([
+	{ nombre: "Usuario Prueba" },
+	{ nombre: "Usuario Prueba 2" }
+])
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Modificación</h2>
+				<p>El operador más sencillo para modificar: save</p>
+				<ul>
+					<li>Si el documento es nuevo (no tiene _id), lo inserta</li>
+					<li>Si el documento ya existe, lo modifica</li>
+				</ul>
+				<pre>
+					<code class="javascript">
+db.micol.save({ nombre: "Usuario Prueba" })
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Eliminación</h2>
+				<p>remove(&lt;patrón&gt;)</p>
+				<ul>
+					<li>Elimina los documentos que satisfagan la búsqueda</li>
+				</ul>
+				<pre>
+					<code class="javascript">
+db.micol.remove({ nombre: "Usuario Prueba" })
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h1>
+					\<div class="carita">}=)</div>/
+					<a href="http://docs.mongodb.org/manual/" target="_blank">ESTUDIA</a>
+					\<div class="carita">}=)</div>/
+				</h1>
+			</section>
+			<section>
+				<h2>Módulos nuevos que emplearemos:</h2>
+				<ul>
+					<li>
+						<a href="https://www.npmjs.com/package/mongoose" target="_blank">mongoose</a>
+						<b class="fragment">(<small>Para conectar Node.JS a MongoDB</small>)</b>
+					</li>
+					<li>
+						Lee la <a href="http://mongoosejs.com/index.html" target="_blank">documentación</a>
+						<b class="fragment">(<small>Es un ODM con muchas monadas</small>) <div class="carita">=P</div></b>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Let's to Code! \<div class="carita">XD</div>/</h1>
+			</section>
+			<section>
+				<h1>Clase 16</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>API REST MongoDB con MVC</li>
+					<li>Autenticación Express con MySQL</li>
+					<li>Modularizar Middlewares</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Módulos nuevos que emplearemos:</h2>
+				<ul>
+					<li>
+						<a href="https://www.npmjs.com/package/express-session" target="_blank">express-session</a>
+						<b class="fragment">(<small>Para crear autenticación con Express</small>)</b>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 17</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Autenticación Express con MySQL</li>
+					<li>Autenticación Express con MongoDB</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Clase 18</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Socket.IO</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Qué son <a href="https://www.websocket.org/" target="_blank">websockets</a>?</h2>
+				<p>Protocolo de comunicación</p>
+				<ul>
+					<li>Full-duplex</li>
+					<li>Una sola conexión permanente</li>
+					<li>Stream de mensajes</li>
+					<li>Contenido en tiempo real</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Qué son websockets?</h2>
+				<p>Es decir...</p>
+				<ul>
+					<li>El cliente puede enviar y recibir datos en tiempo real</li>
+					<li>Orientado a "eventos" (mensajes)</li>
+					<li>Siempre conectado</li>
+					<li>Baja latencia</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Websockets y Node.JS</h2>
+				<p>
+					Funcionan bien
+					<div class="carita">}=D</div>
+				</p>
+				<ul>
+					<li>El servidor maneja muchas conexiones simultáneas</li>
+					<li>Buena integración con JSON</li>
+					<li>Eventos</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Para qué sirven?</h2>
+				<p>Fundamentalmente, para:</p>
+				<ul>
+					<li>Actividades colaborativas</li>
+					<li>Juegos multijugador</li>
+					<li>Enviar datos</li>
+					<li>Cargar recursos</li>
+					<li>En resumen: tiempo real en vez de "a petición"</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Socket.IO</h2>
+				<p>Vamos a usar <a href="http://socket.io/" target="_blank">Socket.IO</a></p>
+				<ul>
+					<li>Una librería para manipular websockets</li>
+					<li>Muy popular</li>
+					<li>Fallback para navegadores obsoletos</li>
+					<li>Muy fácil de usar</li>
+					<li>Servidor / Cliente</li>
+					<li><a href="http://socket.io/docs/" target="_blank">API DOC</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Socket.IO</h2>
+				<p>Los sockets emiten eventos</p>
+				<ul>
+					<li>Un evento = un "mensaje"</li>
+					<li>Se pueden pasar parámetros</li>
+					<li><code>socket.on(mensaje, callback)</code></li>
+					<li><code>socket.emit(mensaje, [param1, param2, ...])</code></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Socket.IO</h2>
+				<p>Eventos reservados en el:</p>
+				<ul>
+					<li>
+						Servidor:
+						<ul>
+							<li><code>io.sockets.on("connection", cb)</code></li>
+							<li><code>socket.on("message", cb)</code></li>
+							<li><code>socket.on("disconnect", cb)</code></li>
+						</ul>
+					</li>
+					<li>
+						Cliente:
+						<ul>
+							<li><code>socket.on("connect", cb)</code></li>
+							<li><code>socket.on("disconnect", cb)</code></li>
+							<li><code>socket.on("error", cb)</code></li>
+							<li><code>socket.on("message", cb)</code></li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Let's to Code! \<div class="carita">XD</div>/</h1>
+			</section>
+			<section>
+				<h1>Clase 19</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Chat con Express y Socket.IO</li>
+					<li>Streaming de Video con Socket.IO</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Streaming de Video:</h2>
+				<p>Considerar las siguientes API's:</p>
+				<ul>
+					<li>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window.URL" target="_blank">Window.URL</a>
+						<b class="fragment">(<small>Para manipular objetos en la URL</small>)</b>
+					</li>
+					<li>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank">Canvas</a>
+						<b class="fragment">(<small>Para crear el area de renderizado del stream en el cliente</small>)</b>
+					</li>
+					<li>
+						<a href="https://developer.mozilla.org/es/docs/Web/API/Navigator.getUserMedia" target="_blank">Navigator.getUserMedia</a>
+						<b class="fragment">(<small>Para tener acceso a la camara web</small>)</b>
+					</li>
+					<li>
+						<a href="https://developer.mozilla.org/es/docs/DOM/window.requestAnimationFrame" target="_blank">window.requestAnimationFrame</a>
+						<br />
+						<b class="fragment">(<small>Para gestionar la reproducción del stream del cliente</small>)</b>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h1>Let's to Stream! \<div class="carita">XD</div>/</h1>
+			</section>
+			<section>
+				<h1>Clase 20</h1>
+			</section>
+			<section>
+				<h3>Menú del Día:</h3>
+				<ul>
+					<li>Node.JS en Producción</li>
+					<li>io.js</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Node.JS en Producción</h2>
+			</section>
+			<section>
+				<h3>Opciones de Hosting para Node.js</h3>
+				<ul style="list-style:none;">
+					<li>
+						<span style="color:red; font-size:2em">&#9747;</span>Hosting Compartido
+					</li>
+					<li>
+						<span style="color:green; font-size:2em">&#10004;</span>Hosting Dedicados
+					</li>
+					<li>
+						<span style="color:green; font-size:2em">&#10004;</span>Hosting Virtuales (VPS)
+					</li>
+					<li>
+						<span style="color:green; font-size:2em">&#10004;</span>Hosting en la Nube (Cloud Service)
+					</li>
+					<li>
+						<a href="https://github.com/joyent/node/wiki/Node-Hosting" target="_blank">+ info</a>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<p>
+					Para esta ocasión usaremos <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>
+				</p>
+				<p>Considerar los siguientes posts:</p>
+				<ul>
+					<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server" target="_blank">How to install Node.JS on Ubuntu</a></li>
+					<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04" target="_blank">How to set up a Node.JS Application for Production on Ubuntu</a></li>
+					<li><a href="http://web.ua.es/cuantica/docencia/ccem/teoria/node127.html" target="_blank">Comandos del editor vi</a></li>
+				</ul>
+			</section>
+			<section>
+				<h1>Let's to Deploy! \<div class="carita">XD</div>/</h1>
+			</section>
+			<section>
+				<h2>io.js</h2>
+			</section>
+			<section>
+				<h2><a href="https://iojs.org" target="_blank">io.js</a></h2>
+				<p>
+					Es un fork amigable de Node.js™, compatible con npm, liderado bajo un modelo de <a href="https://github.com/iojs/io.js/blob/v1.x/GOVERNANCE.md#readme" target="_blank">open governance</a>
+				</p>
+				<img src="img/io.png" style="max-width:20%; border:0; box-shadow:none;" />
+			</section>
+			<section>
+				<h2>¿Por qué io.js?</h2>
+				<ul>
+					<li class="fragment">Porque el <a href="http://www.modulecounts.com/" target="_blank">ecosistema</a> de Node.JS creció, pero...</li>
+					<li class="fragment"><a href="https://github.com/joyent/node/graphs/contributors" target="_blank">Node.JS</a> se estancó</li>
+				</ul>
+			</section>
+			<section>
+				<h2>¿Entonces?</h2>
+			</section>
+			<section>
+				<img src="img/porque-node.jpg" />
+			</section>
+			<section>
+				<img src="img/relajate.jpg" />
+			</section>
+			<section>
+				<h2>io.js</h2>
+				<p>Está lidereado por los contribuyentes más activos de Node.JS y el CEO de NPM</p>
+				<p>Su objetivo es arreglar de lo que carece Node.JS</p>
+			</section>
+			<section>
+				<h2>io.js</h2>
+				<ul>
+					<li>Soporte para las últimas versiones de V8</li>
+					<li>Desarrollo activo haciendo liberaciones semanales</li>
+					<li>Integración continua y ejecución de pruebas al 100%</li>
+					<li>Vinculación con la comunidad</li>
+					<li>Gobernabilidad abierta por la comunidad y no por empresas</li>
+					<li>Hoja de ruta predecible</li>
+					<li>Versiones compatibles con SemVer</li>
+					<li>Comienza a incrementar su <a href="https://github.com/iojs/io.js/graphs/contributors" target="_blank">actividad</a></li>
+				</ul>
+			</section>
+			<section>
+				<p>
+					La reacción de Joyent, propietario de Node.JS fue lanzar la versión 0.12.X que la comunidad estaba esperando por casi 2 años, con ello Joyent logra mantener la paridad de características con io.js
+				</p>
+				<p>
+					Todo esto sucede en diciembre del 2014 y io.js se libera el 13 de enero del 2015
+				</p>
+			</section>
+			<section>
+				<div>
+					<article class="dos-columnas">
+						<img src="img/node.png" style="border:0; box-shadow:none" />
+						<ul>
+							<li>Limita objetivos a largo plazo</li>
+							<li>Soporte completo en servidores y gestores de paquetes</li>
+							<li>Marca ampliamente conocida y reconocida</li>
+						</ul>
+					</article>
+					<article class="dos-columnas">
+						<img src="img/io.png" style="max-width:32%; border:0; box-shadow:none" />
+						<ul>
+							<li>Comunidad muy activa</li>
+							<li>Soporte a <a href="https://iojs.org/es/es6.html" target="_blank">ES6</a></li>
+							<li>Rendimiento ligeramente superior</li>
+							<li>Liberaciones rápidas utilizando semver</li>
+						</ul>
+					</article>
+				</div>
+			</section>
+			<section>
+				<h2>¿Reconciliación?</h2>
+				<p>
+					La comunidad io.js es inflexible sobre el mantenimiento de la paridad de características
+				</p>
+				<p>
+					Ambas partes han manifestado en repetidas ocasiones su intención general de la reconciliación.
+				</p>
+				<p>
+					La fundación Linux se ha ofrecido como mediador en la situación.
+				</p>
+			</section>
+			<section>
+				<h2><a href="https://github.com/iojs/io.js/issues/1664" target="_blank">La Fundación Node</a></h2>
+				<p>
+					El escenario más prometedor en estos momentos es crear la Fundación Node que conste de 2 partes:
+				</p>
+				<ul>
+					<li>Un consejo de fundación encargado de la parte legal, marca, mercadotecnia y fondos</li>
+					<li>Un comite técnico que actué de forma independiente y permita el crecimiento del ecosistema JS en el servidor</li>
+					<li>Ya existe un <a href="https://github.com/jasnell/node.js-convergence" target="_blank">repo</a> en Github</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Más sobre esta tecno novela</h2>
+				<ul>
+					<li><a href="https://iojs.org/es/faq.html" target="_blank">FAQ's io.js</a></li>
+					<li><a href="http://blog.izs.me/post/104685388058/io-js" target="_blank">Node Forward, io.js</a></li>
+					<li><a href="https://medium.com/@iojs/io-js-and-a-node-js-foundation-4e14699fb7be" target="_blank">La fundación Node</a></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Conclusiones</h2>
+				<ul>
+					<li>Node.JS 0.12.X y io.js son totalmente compatibles y se pueden utilizar indistintamente.</li>
+					<li>io.js seguirá teniendo más contribuciones de la comunidad y, por tanto, introducirá y liberará más características, así como arreglará errores antes que Node.JS (por ejemplo el manejo de promesas).</li>
+					<li>En algún punto ambos proyectos se unificarán.</li>
+					<li>No le conviene a Joyent ponerse en contra de una gran y apasionada comunidad JS</li>
+					<li>Mucho se habla de que la versión 2 de io.js se unificará con la versión 1 de Node</li>
+				</ul>
+			</section>
+			<section>
+				<p>
+					Yo recomendaría usar io.js ahora mismo, aprovechar sus beneficios y no retrasar el aprendizaje hasta que ambos proyectos se unifiquen.
+				</p>
+				<h3>
+					Comienza a <a href="https://iojs.org/api/" target="_blank">estudiar</a> <div class="carita">=P</div>				
+				</h3>
+			</section>
+			<section>
+				<h2>Y una cosa más...</h2>
+			</section>
+			<section>
+				<img src="img/learn-js.png" />
+				<h3>JS es el futuro de la web</h3>
+				<h4>como se llame el entorno es lo de menos</h4>
+				<h1><div class="carita">):D</div>/</h1>		
+			</section>
+			<section>
+				<h2>
+					<div class="carita">=D</div>
+					Muchas Gracias
+					<div class="carita">=D</div>
+				</h2>
+				<h3>¡Hasta la próxima!</h3>
+				<p>
+					<a href="http://twitter.com/jonmircha" target="_blank">@jonmircha</a>
+					/ 
+					<a href="mailto:j@bextlan.com" target="_blank">j@bextlan.com</a>
+				</p>
+				<div>
+					<video src="img/nodejs.mp4" style="height:360px; width:480px;" onclick="this.play();"></video>
+				</div>
+			</section>
+		</div>
+	</div>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script>
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: false,
+			progress: true,
+			history: true,
+			center: true,
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+			// Optional reveal.js plugins
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
+	</script>
+</body>
+</html>

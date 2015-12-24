@@ -1,6 +1,0 @@
-{
-	"mongoDB":{
-		"host": "localhost",
-		"database": "movies"
-	}
-}
